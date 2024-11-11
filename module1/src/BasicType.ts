@@ -94,9 +94,9 @@ const user: {name: string, age: number, passion: string} = {
 
 }
 
-
+///////////  spread operator,  rest oprator,   destructuring   //////////////////
 {
-     // ////////  spread operator,  rest oprator,   destructuring   //////////////////
+     
 
    
      //learn spread operator (Spread Operator ব্যবহার করা হয় একটি অ্যারে বা অবজেক্টের মধ্যে সমস্ত উপাদানকে আলাদা করতে।) মোট কথা Spread Operator: উপাদানকে আলাদা করে কপি করে।
@@ -226,32 +226,36 @@ const user = {
   
     
   }
-///////////////////////////  union types |   intersection type &          /////////////////////////
+///////////////////  union types |   intersection type &     //////////////////
   {
     //
     // 
   
-    // type FrontendDeveloper = 'fakibazDeveloper' | 'juniorDeveloper'
-    // type FullstackDeveloper = 'frontendDeveloper' | 'expertDeveloper'
+    type FrontendDeveloper1 = 'fakibazDeveloper' | 'juniorDeveloper'
+    type FullstackDeveloper1 = 'frontendDeveloper' | 'expertDeveloper'
   
-    //  type Developer = FrontendDeveloper | FullstackDeveloper
+     type Developer = FrontendDeveloper1 | FullstackDeveloper1
   
-    // const newDeveloper : FrontendDeveloper = 'juniorDeveloper'
+    const newDeveloper : FrontendDeveloper1 = 'juniorDeveloper'
   
-    // type User ={
-    //   name: string;
-    //   email?: string;
-    //   gender:"male"| "female";
-    //   bloodGroup:"O+"|"A+"|"AB+"
-    // }
+    type User ={
+      name: string;
+      email?: string;
+      gender:"male"| "female";
+      bloodGroup:"O+"|"A+"|"AB+"
+    }
   
-    // const user1: User ={
-    //   name:'persian',
-    //   gender:'male',
-    //   bloodGroup:'O+'
-    // }
+    const user: User ={
+      name:'persian',
+      gender:'male',
+      bloodGroup:'O+'
+    }
   
-    type FrontendDeveloper = {
+
+
+
+
+    type FrontendDeveloper2 = {
       skills: string[];
       designation1: "Frontend Developer";
     };
@@ -261,15 +265,15 @@ const user = {
       designation2: "Backend Developer";
     };
   
-    type FullstackDeveloper = FrontendDeveloper & BackendDeveloper;
+    type FullstackDeveloper2 = FrontendDeveloper2 & BackendDeveloper;
   
-    const fullstackDeveloper: FullstackDeveloper = {
+    const fullstackDeveloper: FullstackDeveloper2 = {
       skills: ["HTML", "CSS", "EXPRESS"],
       designation1: "Frontend Developer",
       designation2: "Backend Developer",
     };
   
-    //
+
   }
 
 
