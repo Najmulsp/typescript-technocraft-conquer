@@ -276,45 +276,98 @@ const user = {
 
   }
 
-
-
-
-
-
-
-
-
-
-// /////////////////    generic type:  ///////////////////
-{
-type GenericArray<T> = Array<T>;
-
-// const rollNumbers: number[] = [3, 4, 6];
-const rollNumbers: GenericArray<number> = [3, 4, 6];
-
-// const mentors : string[] = ["mr. w", "mr. h", "mr. o"];
-const mentors : GenericArray<string> = ["mr. w", "mr. h", "mr. o"];
-
-// const boolArray: boolean[] = [true, false, true];
-const boolArray: GenericArray<boolean> = [true, false, true];
-
-
-const user: GenericArray<{name:string, age:number}> = [
-     {
-          name: "Mezba",
-          age: 29,
-     },
-     {
-          name: "Zhankor",
-          age: 49,
+ //// ternary operator || optional chaining || nullish coalescing operator  /////
+  {
+    
+   // ternary operator
+     const age: number = 18;
+   
+     if (age >= 18) {
+       console.log("adult");
+     } else {
+       console.log("not adult");
      }
-]
+   
+     const isAdult = age >= 18 ? "adult" : "not adult";
+     // console.log({ isAdult });
+   
+     //nullish coalescing operator
+     // null / undefined ---> if any need to make decision depending upon null and undefined then use this nullish coalescing , that means ??
+   
+     const isAuthenticated = "";
+   
+     const result1 = isAuthenticated ?? "Guest";
+     const result2 = isAuthenticated ? isAuthenticated : "Guest";
+     console.log({ result1 }, { result2 });
 
-// ////////// generic tuple
 
-type GenericTuple<X, Y,> = [X, Y];
 
-const manush : GenericTuple<string, number> = ["hablu", 23];
+   //  optional chaining
+     type User = {
+       name: string;
+       address: {
+         city: string;
+         road: string;
+         presentaddress: string;
+         permanentAddress?: string;   // optional chaining
+       };
+     };
+   
+     const user: User = {
+       name: "Persian",
+       address: {
+         city: "ctg",
+         road: "Awesome Road",
+         presentaddress: "ctg town",
+       },
+     };
+   
+     const permanentAddress =
+       user?.address?.permanentAddress ?? "No Permanent Address";  // optional chaining and nullish coalescing
+     //console.log({ permanentAddress });
+     
+   }
+/////////////// nullable types , unknown types , never type   //////////////
+   {
+    
+  // nullable type : if null will send then it will receive and give all the value.
+    const searchName = (value: string | null) => {
+      if (value) {
+        console.log("Searching");
+      } else {
+        console.log("There is nothing to search");
+      }
+    };
+    searchName(null);
+  
+    // unknown  typeof : if the value is unknown to us in run time we will get value then we can do that the value in unknown so if you get this type then do this.
+  
+    const getSpeedInMeterPerSecond = (value: unknown) => {
+      if (typeof value === "number") {
+        const convertedSpeed = (value * 1000) / 3600;
+        console.log(`The speed is ${convertedSpeed} ms^-1`);
+      } else if (typeof value === "string") {
+        const [result, unit] = value.split(" ");
+        const convertedSpeed = (parseFloat(result) * 1000) / 3600;
+        console.log(`The speed is ${convertedSpeed} ms^-1`);
+      } else {
+        console.log("wrong input");
+      }
+    };
+    getSpeedInMeterPerSecond(null);
+  
+    //never : if we are sure that it will never return any type of value, then we can use never type , see in below example it will always throw an error.
+  
+    const throwError = (msg: string): never => {
+      throw new Error(msg);
+    };
+  
+    throwError("mushkil se error hogaya");
+  
+    //
+  }
 
-const user2: GenericTuple<number, {name: string, email: string}> = [124, {name: "gamlu", email: "agao@gmail.com"}]
-}
+
+
+
+
